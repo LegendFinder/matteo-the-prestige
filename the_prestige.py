@@ -675,6 +675,9 @@ class StartDraftCommand(Command):
     async def execute(self, msg, command):
         draft = Draft.make_draft()
         mentions = {f'<@!{m.id}>' for m in msg.mentions}
+                                       
+        refresh = "-r" in command
+                                       
         content = msg.content.split('\n')[1:]  # drop command out of message
         if not content or len(content) % 3:
             await msg.channel.send('Invalid list')
@@ -696,6 +699,8 @@ class StartDraftCommand(Command):
             slogan = content[i + 2].strip()
             draft.add_participant(handle, team_name, slogan)
 
+        draft.refresh_pitchers = refresh
+                                       
         success = await self.wait_start(msg.channel, mentions)
         if not success:
             return
