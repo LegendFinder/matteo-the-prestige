@@ -30,6 +30,7 @@ class Draft:
         self._active_participant = BOOKMARK  # draft mutex
         self._players = onomancer.get_names(limit=DRAFT_SIZE)
         self._round = 0
+        self._refresh_pitchers = False
 
     @property
     def round(self):
@@ -110,6 +111,8 @@ class Draft:
         if self._round < DRAFT_ROUNDS:
             self._active_participant.team.add_lineup(games.player(json.dumps(player)))
         elif self._round == DRAFT_ROUNDS:
+            if refresh_pitchers
+                self.refresh_players()
             self._active_participant.team.add_pitcher(games.player(json.dumps(player)))
 
         self.advance_draft()
