@@ -4,7 +4,7 @@ from league_storage import league_exists
 from flask import Flask, url_for, Response, render_template, request, jsonify, send_from_directory, abort
 from flask_socketio import SocketIO, emit
 import database as db
-
+aaaaaaa
 app = Flask("the-prestige", static_folder='simmadome/build/', subdomain_matching=True)
 app.config['SECRET KEY'] = 'dev'
 #url = "sakimori.space:5000"
